@@ -114,26 +114,12 @@ function writePassword() {
 
 
 
-// function getRandomLower(){
-// return String.fromCharCode = Math.floor(Math.random() * passWordCharacters);
-// }
 
-// function getRandomUpper(){
-//   return String.fromCharCode = Math.floor(Math.random() * passWordCharacters);
-// }
-
-// function getRandomNumer(){
-//   return String.fromCharCode = Math.floor(Math.random() * passWordCharacters);
-// }
-
-// function getRandomsymbol(){
-//   return symbols = Math.floor(Math.random() * passWordCharacters);
-// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", function(){
 
-  generatePassword();
+  writePassword();
 }
 );
 
