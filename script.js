@@ -10,12 +10,34 @@ var generateBtn = document.querySelector("#generate");
 // would they like special characters?
 // once all prompts are answered password should generate
 // window alert user of new password
+var inputArray = {
+  lowerCase: ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
+ 
+  upperCase: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+ 
+  numberArray: ["0","1","2","3","4","5","6","7","8","9"],
+ 
+ specialCharacters: ['!', '@', '#', '$', '%', '&', '*', '()', '+', '=', '[', ']', '{', '}'],
+ };
+   
+
 
 function generatePassword(){
   console.log("how long would you like your password to be?");
-  let passWordLength = window.prompt("how long would you like your password tobe?" + "please choose a number between 8 - 128");
-  
-  var characterAmount = ""; 
+  let passWordLength =  parseInt(window.prompt("how long would you like your password tobe?" + "please choose a number between 8 - 128"),10);
+  if(passWordLength < 8 ){
+    alert("password length has to be at least 8 characters, try again!");
+    return "password not generated";
+  }
+ 
+  if(passWordLength > 128 ){
+    alert("password length has to be at most 128 characters, try again!");
+    return "password not generated";
+  }
+
+
+  var possiblePasswordCharacters = []; 
+  console.log("possiblePasswordCharacters = ",possiblePasswordCharacters);
   
 
   console.log(passWordLength);
@@ -31,6 +53,36 @@ function generatePassword(){
   
   let specialCharacters = window.confirm("would you like special characters?");
   console.log(specialCharacters);
+if(lowerCase === false && upperCase === false && numericCharacters === false && specialCharacters === false){
+  alert("you need to include at lease one character type to generate password");
+  return "password not generated";
+}
+
+  
+    if(lowerCase === true); {
+    possiblePasswordCharacters = possiblePasswordCharacters.concat(inputArray.lowerCase);
+    console.log("possiblePasswordCharacters = ",possiblePasswordCharacters);
+    } 
+      (upperCase === true);{
+        possiblePasswordCharacters = possiblePasswordCharacters.concat(inputArray.upperCase);
+        console.log("possiblePasswordCharacters = ",possiblePasswordCharacters);
+      }
+     
+      (numericCharacters === true);{
+        possiblePasswordCharacters = possiblePasswordCharacters.concat(inputArray.numberArray);
+        console.log("possiblePasswordCharacters = ",possiblePasswordCharacters);
+      }
+     
+      (specialCharacters === true);{
+        possiblePasswordCharacters = possiblePasswordCharacters.concat(inputArray.specialCharacters);
+        console.log("possiblePasswordCharacters = ",possiblePasswordCharacters);
+      }
+      var password = "";
+      for (let i = 0; i < passWordLength; i++){
+        password += possiblePasswordCharacters[Math.floor(Math.random() * possiblePasswordCharacters.length)];
+      }
+      console.log ("password = ", password );
+    
 };
 
 
@@ -48,36 +100,9 @@ function writePassword() {
 
   passwordText.value = password;
 
-  var inputArray = {
-    lowerCase: ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
-   
-    upperCase: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-   'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' 
-   ],
-   numberArray: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
-   
-   specialCharacters: ['!', '@', '#', '$', '%', '&', '*', '()', '+', '=', '[', ']', '{', '}'],
-   };
-     
+  
 
-
-
-  for (let i = 0; i <  -1; i++){
-    if(lowerCase === true); {
-    characterAmount += getRandomLower(passWordCharacters);
-    } 
-      (upperCase === true);{
-        characterAmount += getRandomUpper(passWordCharacters);
-      }
-     
-      (numericCharacters === true);{
-        characterAmount += getRandomNumer(passWordCharacters);
-      }
-     
-      (specialCharacters === true);{
-        characterAmount += getRandomsymbol(passWordCharacters);
-      }
-    }
+  
 
   }
 
