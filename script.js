@@ -82,7 +82,7 @@ if(lowerCase === false && upperCase === false && numericCharacters === false && 
         password += possiblePasswordCharacters[Math.floor(Math.random() * possiblePasswordCharacters.length)];
       }
       console.log ("password = ", password );
-    
+    return password;
 };
 
 
@@ -96,15 +96,11 @@ if(lowerCase === false && upperCase === false && numericCharacters === false && 
 function writePassword() {
   console.log("enter the right password function");
   var password = generatePassword();
+  console.log(password)
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-  
-
-  
-
-  }
+}
 
   
   
